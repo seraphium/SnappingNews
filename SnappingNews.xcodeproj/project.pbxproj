@@ -15,8 +15,8 @@
 		4BA406341DB213B50029802E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA406321DB213B50029802E /* LaunchScreen.storyboard */; };
 		4BA4063C1DB2149E0029802E /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA4063B1DB2149D0029802E /* HandyJSON.framework */; };
 		4BA4063D1DB2149E0029802E /* HandyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA4063B1DB2149D0029802E /* HandyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4BA406471DB21A720029802E /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA406451DB21A720029802E /* News+CoreDataClass.swift */; };
-		4BA406481DB21A720029802E /* News+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA406461DB21A720029802E /* News+CoreDataProperties.swift */; };
+		4BA4064B1DB222370029802E /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA406491DB222370029802E /* News+CoreDataClass.swift */; };
+		4BA4064C1DB222370029802E /* News+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4064A1DB222370029802E /* News+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,8 +52,8 @@
 		4BA406331DB213B50029802E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BA406351DB213B50029802E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA4063B1DB2149D0029802E /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
-		4BA406451DB21A720029802E /* News+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "News+CoreDataClass.swift"; path = "../News+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4BA406461DB21A720029802E /* News+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "News+CoreDataProperties.swift"; path = "../News+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4BA406491DB222370029802E /* News+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "News+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4BA4064A1DB222370029802E /* News+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "News+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +94,8 @@
 				4BA406301DB213B50029802E /* Assets.xcassets */,
 				4BA406321DB213B50029802E /* LaunchScreen.storyboard */,
 				4BA406351DB213B50029802E /* Info.plist */,
-				4BA406451DB21A720029802E /* News+CoreDataClass.swift */,
-				4BA406461DB21A720029802E /* News+CoreDataProperties.swift */,
+				4BA406491DB222370029802E /* News+CoreDataClass.swift */,
+				4BA4064A1DB222370029802E /* News+CoreDataProperties.swift */,
 				4BA4062D1DB213B50029802E /* SnappingNews.xcdatamodeld */,
 			);
 			path = SnappingNews;
@@ -194,9 +194,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA406471DB21A720029802E /* News+CoreDataClass.swift in Sources */,
+				4BA4064B1DB222370029802E /* News+CoreDataClass.swift in Sources */,
 				4BA4062F1DB213B50029802E /* SnappingNews.xcdatamodeld in Sources */,
-				4BA406481DB21A720029802E /* News+CoreDataProperties.swift in Sources */,
+				4BA4064C1DB222370029802E /* News+CoreDataProperties.swift in Sources */,
 				4BA406291DB213B50029802E /* ViewController.swift in Sources */,
 				4BA406271DB213B50029802E /* AppDelegate.swift in Sources */,
 			);
