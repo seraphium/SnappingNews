@@ -7,7 +7,6 @@
 //
 
 import Alamofire
-import SwiftyJSON
 import HandyJSON
 
  let BASE_URL = "https://v.juhe.cn/toutiao/index?"
@@ -26,6 +25,8 @@ enum NewsType :String {
     case shishang
 }
 
+
+
 class NetworkManager {
     
 static let sharedManager = NetworkManager()
@@ -40,6 +41,8 @@ static let sharedManager = NetworkManager()
                 let value = response.result.value!
                 if let loadedItems = JSONDeserializer<Result>.deserializeFrom(json: value, designatedPath: "result")
                 {
+
+                    //completion handler
                     finished(loadedItems.data)
                 }
 

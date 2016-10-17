@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2333a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--First View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="TransitionTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +16,71 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBC-Oo-EUv">
+                                <state key="normal" title="Load News"/>
+                                <connections>
+                                    <segue destination="hs8-0T-Mbl" kind="presentation" id="tDW-pz-lNo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="TBC-Oo-EUv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SG1-WL-OCU"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TBC-Oo-EUv" secondAttribute="bottom" constant="60" id="p7k-MU-IL8"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="124" y="104"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="0cv-mZ-R47">
+            <objects>
+                <viewController id="hs8-0T-Mbl" customClass="SecondViewController" customModule="TransitionTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tNI-G0-w5x"/>
+                        <viewControllerLayoutGuide type="bottom" id="36p-vs-xWF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ota-Rg-ZIh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgG-jl-Eeb">
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissClicked:" destination="hs8-0T-Mbl" eventType="touchUpInside" id="Ell-mk-Kym"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Njv-Jv-1HT">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="KNM-8L-nB5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVb-Kg-yoO">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Njv-Jv-1HT" firstAttribute="centerX" secondItem="Ota-Rg-ZIh" secondAttribute="centerX" id="3ME-33-Piw"/>
+                            <constraint firstItem="Njv-Jv-1HT" firstAttribute="width" secondItem="Ota-Rg-ZIh" secondAttribute="width" id="8Go-W1-exJ"/>
+                            <constraint firstItem="CVb-Kg-yoO" firstAttribute="bottom" secondItem="Njv-Jv-1HT" secondAttribute="bottom" constant="-20" id="Pii-Ux-vr9"/>
+                            <constraint firstItem="Njv-Jv-1HT" firstAttribute="top" secondItem="tNI-G0-w5x" secondAttribute="bottom" id="TsY-ge-SXP"/>
+                            <constraint firstItem="36p-vs-xWF" firstAttribute="top" secondItem="GgG-jl-Eeb" secondAttribute="bottom" constant="60" id="btv-Dj-lzh"/>
+                            <constraint firstItem="CVb-Kg-yoO" firstAttribute="centerX" secondItem="Ota-Rg-ZIh" secondAttribute="centerX" id="jYe-hs-1KP"/>
+                            <constraint firstItem="GgG-jl-Eeb" firstAttribute="centerX" secondItem="Ota-Rg-ZIh" secondAttribute="centerX" id="rrW-it-blV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Njv-Jv-1HT" id="l4I-Md-gYV"/>
+                        <outlet property="titleLabel" destination="CVb-Kg-yoO" id="iBR-QB-mOc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vUb-pa-ptX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860" y="109.29535232383809"/>
         </scene>
     </scenes>
 </document>
