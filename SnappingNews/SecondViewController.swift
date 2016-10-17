@@ -88,6 +88,7 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
     func loadPersistNews(){
         if let news = PersistantStore.shared.fetchNews() {
             if news.count > 0 {
+                print ("loaded news count: \(news.count)")
                 let first = news[0]
                 let url = URL(string: first.thumbnail_pic_s!)!
                 self.titleLabel.text = first.title
@@ -109,6 +110,8 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
                 let randNum = Int(arc4random_uniform(UInt32(newsItems.count)))
 
                 let first = newsItems[randNum]
+                //clear db
+                PersistantStore.shared.clearNews()
                 //persistant to db
                 PersistantStore.shared.addNews(from: first)
                 
