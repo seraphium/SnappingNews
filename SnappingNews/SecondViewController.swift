@@ -15,6 +15,8 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     
+    @IBOutlet var webView: UIWebView!
+    
     var panTransition : UIPercentDrivenInteractiveTransition?
     let transitionAnimator = TransitionAnimator()
     let dismissAnimator = TransitionDismissAnimator()
@@ -33,6 +35,11 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
         self.view.layer.masksToBounds = true
         
         self.imageView.layer.zPosition = -1000
+        
+        webView.scalesPageToFit = true
+        webView.dataDetectorTypes = .all
+
+        
       //  self.imageView.layer.roundCorners(corners: [.topLeft], radius: 8.0)
         loadPersistNews()
         loadNews()
@@ -119,6 +126,12 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
                 let url = URL(string: first.thumbnail_pic_s!)!
                 self.titleLabel.text = first.title
                 self.imageView.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+                
+                if let webUrl = first.url {
+                    let request = URLRequest(url: URL(string: webUrl)!)
+                    self.webView.loadRequest(request)
+                }
+               
             }
             
         }
