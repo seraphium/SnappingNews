@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GGb-2X-nU7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Test-->
+        <scene sceneID="NG2-wD-CqR">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="SnappingNews" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="Rvt-9S-gi7" customClass="FirstViewController" customModule="SnappingNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TuN-pA-Ggm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBC-Oo-EUv">
-                                <state key="normal" title="Load News"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="defaultCell" textLabel="KjD-yd-uSQ" style="IBUITableViewCellStyleDefault" id="m2S-Zf-bfk">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m2S-Zf-bfk" id="hnE-Hq-Lkb">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KjD-yd-uSQ">
+                                            <frame key="frameInset" minX="15" width="345" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="hs8-0T-Mbl" kind="presentation" id="tDW-pz-lNo"/>
+                                    <segue destination="hs8-0T-Mbl" kind="presentation" id="SUs-2T-yv9">
+                                        <segue key="commit" inheritsFrom="parent" id="XP0-9w-8si"/>
+                                        <segue key="preview" inheritsFrom="commit" id="N4T-ty-Jf8"/>
+                                    </segue>
                                 </connections>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="TBC-Oo-EUv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SG1-WL-OCU"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TBC-Oo-EUv" secondAttribute="bottom" constant="60" id="p7k-MU-IL8"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Rvt-9S-gi7" id="g8w-Xq-d7z"/>
+                            <outlet property="delegate" destination="Rvt-9S-gi7" id="SPj-SC-dtD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Test" id="ajw-Ux-QwV"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mdl-fy-NXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="104"/>
+            <point key="canvasLocation" x="885.60000000000002" y="-6.746626686656672"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="0cv-mZ-R47">
@@ -89,7 +105,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUb-pa-ptX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="109.29535232383809"/>
+            <point key="canvasLocation" x="1815.2" y="-7.6461769115442282"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IM9-or-wed">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GGb-2X-nU7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HQm-Oh-W5W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rvt-9S-gi7" kind="relationship" relationship="rootViewController" id="4MZ-Sg-zCn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t9G-bT-ais" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-53.600000000000001" y="-6.746626686656672"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SUs-2T-yv9"/>
+    </inferredMetricsTieBreakers>
 </document>

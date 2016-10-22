@@ -55,7 +55,6 @@ class PersistantStore {
     }
 
     func clearNews() {
-        
         let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "News")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
