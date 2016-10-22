@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreData
+import SVProgressHUD
 
-
-class FirstViewController : UITableViewController {
+class FirstViewController : UITableViewController, NSFetchedResultsControllerDelegate {
 
     
     var fetchedResultController : NSFetchedResultsController<News>!
+    
+    var news: [News]?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -28,22 +30,110 @@ class FirstViewController : UITableViewController {
         
     }
     
+    override func viewDidLoad() {
+        
+        initializeFetchResultController()
+        
+        loadNews()
+
+    }
+    
+    //MARK: - fetch result controller
+    func initializeFetchResultController () {
+        let fetchRequest : NSFetchRequest<News> = News.fetchRequest()
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        let moc = PersistantStore.shared.context!
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "realtype", cacheName: nil)
+        fetchedResultController.delegate = self
+        
+        }
+    
+    
+    
+    
+    //MARK: - network loading
+    
+    func loadNews() {
+        SVProgressHUD.show(withStatus: "正在加载...")
+        
+        NetworkManager.sharedManager.loadTopNews(type: .shishang) {
+            items in
+            SVProgressHUD.dismiss()
+            
+            
+            if let newsItems = items {
+                print(newsItems.count)
+                
+                PersistantStore.shared.clearNews()
+
+                for new in newsItems {
+                 
+                    PersistantStore.shared.addNews(from: new)
+                
+                }
+            
+                do {
+                    
+                    try self.fetchedResultController.performFetch()
+                    
+                    self.tableView.reloadData()
+                    
+                } catch let error {
+                    fatalError("Failed to initialize FetchedResultsController: \(error)")
+                }
+
+            }
+        }
+        
+    }
+
+    
+    //MARK: - table view delegate
+    
+    func configureCell(cell: inout UITableViewCell, forIndexPath indexPath: IndexPath){
+        
+        let selectedObject = fetchedResultController.object(at: indexPath as IndexPath) as News
+        
+        cell.textLabel?.text = selectedObject.title
+        
+        let url = URL(string: selectedObject.thumbnail_pic_s!)!
+        cell.imageView?.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+        
+        
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        
+        if let sections = fetchedResultController.sections {
+            return sections.count
+        } else {
+            return 1
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        
+        if let sections = fetchedResultController.sections  {
+            
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        } else {
+            return 0
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell")
+        var cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell")!
+        configureCell(cell: &cell, forIndexPath: indexPath)
         
-        return cell!
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 80
     }
 }

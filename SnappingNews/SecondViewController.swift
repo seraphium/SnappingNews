@@ -39,9 +39,7 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
         webView.scalesPageToFit = true
         webView.dataDetectorTypes = .all
 
-        
-      //  self.imageView.layer.roundCorners(corners: [.topLeft], radius: 8.0)
-        loadPersistNews()
+            
         loadNews()
     }
 
@@ -92,19 +90,7 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
         self.dismiss(animated: true, completion: nil)
     }
     
-    func loadPersistNews(){
-        if let news = PersistantStore.shared.fetchNews() {
-            if news.count > 0 {
-                print ("loaded news count: \(news.count)")
-                let first = news[0]
-                let url = URL(string: first.thumbnail_pic_s!)!
-                self.titleLabel.text = first.title
-                self.imageView.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
-
-            }
-        }
-    }
-    //MARK: - main logic
+       //MARK: - main logic
     func loadNews() {
         SVProgressHUD.show(withStatus: "正在加载...")
 
@@ -117,11 +103,6 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
                 let randNum = Int(arc4random_uniform(UInt32(newsItems.count)))
 
                 let first = newsItems[randNum]
-                //clear db
-                PersistantStore.shared.clearNews()
-                //persistant to db
-                PersistantStore.shared.addNews(from: first)
-                
         
                 let url = URL(string: first.thumbnail_pic_s!)!
                 self.titleLabel.text = first.title

@@ -20,6 +20,8 @@ class PersistantStore {
     
     }
     
+    
+    
     func addNews(from item: NewsItem) -> Bool {
         var news = NSEntityDescription.insertNewObject(forEntityName: "News", into: context) as! News
         item.setNews(news: &news)
