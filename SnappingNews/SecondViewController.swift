@@ -21,7 +21,8 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
     let transitionAnimator = TransitionAnimator()
     let dismissAnimator = TransitionDismissAnimator()
     
-
+    var news : NewsItem?
+    
     override func awakeFromNib() {
         self.transitioningDelegate = self
         self.modalPresentationStyle = UIModalPresentationStyle.custom
@@ -40,7 +41,11 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
         webView.dataDetectorTypes = .all
 
             
-        loadNews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initNews()
+
     }
 
     func panGestureAction(gesture: UIPanGestureRecognizer) {
@@ -91,32 +96,21 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
     }
     
        //MARK: - main logic
-    func loadNews() {
-        SVProgressHUD.show(withStatus: "正在加载...")
-
-        NetworkManager.sharedManager.loadTopNews(type: .shishang) {
-            items in
-            SVProgressHUD.dismiss()
+    func initNews() {
+        if let loadedNews = self.news {
             
-            if let newsItems = items {
-                print(newsItems.count)
-                let randNum = Int(arc4random_uniform(UInt32(newsItems.count)))
-
-                let first = newsItems[randNum]
-        
-                let url = URL(string: first.thumbnail_pic_s!)!
-                self.titleLabel.text = first.title
-                self.imageView.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
-                
-                if let webUrl = first.url {
-                    let request = URLRequest(url: URL(string: webUrl)!)
-                    self.webView.loadRequest(request)
-                }
-               
+            let url = URL(string: loadedNews.thumbnail_pic_s!)!
+            self.titleLabel.text = loadedNews.title
+            self.imageView.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+            
+            if let webUrl = loadedNews.url {
+                let request = URLRequest(url: URL(string: webUrl)!)
+                self.webView.loadRequest(request)
             }
             
         }
-    
+        
+   
     }
 }
 

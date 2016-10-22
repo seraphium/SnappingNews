@@ -15,10 +15,14 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
     
     var fetchedResultController : NSFetchedResultsController<News>!
     
-    var news: [News]?
+    var news: [NewsItem]?
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        let destVC = segue.destination as! SecondViewController
+        if let selectedNews = news?[(tableView.indexPathForSelectedRow?.row)!] {
+            destVC.news = selectedNews
+        }
 
     }
     
@@ -26,7 +30,6 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        
         
     }
     
@@ -78,6 +81,8 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
                     try self.fetchedResultController.performFetch()
                     
                     self.tableView.reloadData()
+                    
+                    self.news = newsItems
                     
                 } catch let error {
                     fatalError("Failed to initialize FetchedResultsController: \(error)")
