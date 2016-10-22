@@ -9,24 +9,15 @@
 import UIKit
 import CoreData
 import HandyJSON
-import RealmSwift
 
 class PersistantStore {
     
     static let shared = PersistantStore()
     let context: NSManagedObjectContext!
-    
     init() {
         let appdel = UIApplication.shared.delegate as! AppDelegate
         context = appdel.persistentContainer.viewContext
-        do {
-            let realm = try! Realm()
-            
-
-        } catch let error {
-            print ("realm init failed")
-        }
-
+    
     }
     
     func addNews(from item: NewsItem) -> Bool {

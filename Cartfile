@@ -3,4 +3,4 @@ github "Alamofire/Alamofire" ~> 4.0
 github "SnapKit/SnapKit" ~> 3.0.2
 github "SVProgressHUD/SVProgressHUD"
 github "onevcat/Kingfisher" ~> 3.0
-github "realm/realm-cocoa"
+#github "realm/realm-cocoa"

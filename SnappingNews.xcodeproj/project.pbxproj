@@ -24,8 +24,6 @@
 		4B3C123A1DB4754300557F0B /* TransitionDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3C12341DB4754300557F0B /* TransitionDismissAnimator.swift */; };
 		4B3C123D1DB4A43800557F0B /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3C123C1DB4A43800557F0B /* NewsItem.swift */; };
 		4B3C123F1DB4B11B00557F0B /* PersistantStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3C123E1DB4B11B00557F0B /* PersistantStore.swift */; };
-		4B3D09221DB4D0270083D8FD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3D09201DB4D0270083D8FD /* Realm.framework */; };
-		4B3D09231DB4D0270083D8FD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3D09211DB4D0270083D8FD /* RealmSwift.framework */; };
 		4BA406271DB213B50029802E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA406261DB213B50029802E /* AppDelegate.swift */; };
 		4BA406291DB213B50029802E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA406281DB213B50029802E /* ViewController.swift */; };
 		4BA4062C1DB213B50029802E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA4062A1DB213B50029802E /* Main.storyboard */; };
@@ -77,8 +75,6 @@
 		4B3C12341DB4754300557F0B /* TransitionDismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDismissAnimator.swift; sourceTree = "<group>"; };
 		4B3C123C1DB4A43800557F0B /* NewsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		4B3C123E1DB4B11B00557F0B /* PersistantStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistantStore.swift; sourceTree = "<group>"; };
-		4B3D09201DB4D0270083D8FD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		4B3D09211DB4D0270083D8FD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		4BA406231DB213B50029802E /* SnappingNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnappingNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA406261DB213B50029802E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BA406281DB213B50029802E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,9 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B3D09221DB4D0270083D8FD /* Realm.framework in Frameworks */,
 				4BA4063C1DB2149E0029802E /* HandyJSON.framework in Frameworks */,
-				4B3D09231DB4D0270083D8FD /* RealmSwift.framework in Frameworks */,
 				4B3C122D1DB4746B00557F0B /* SVProgressHUD.framework in Frameworks */,
 				4B3C12291DB4746B00557F0B /* Kingfisher.framework in Frameworks */,
 				4B3C12271DB4746B00557F0B /* Alamofire.framework in Frameworks */,
@@ -111,8 +105,6 @@
 		4B3C123B1DB4772000557F0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B3D09201DB4D0270083D8FD /* Realm.framework */,
-				4B3D09211DB4D0270083D8FD /* RealmSwift.framework */,
 				4B3C12231DB4746B00557F0B /* Alamofire.framework */,
 				4B3C12241DB4746B00557F0B /* Kingfisher.framework */,
 				4B3C12251DB4746B00557F0B /* SnapKit.framework */,
@@ -246,8 +238,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			outputPaths = (
 			);

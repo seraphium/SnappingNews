@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import CoreData
+
 
 class FirstViewController : UITableViewController {
 
-       
+    
+    var fetchedResultController : NSFetchedResultsController<News>!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
 
