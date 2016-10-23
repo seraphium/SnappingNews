@@ -27,6 +27,8 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
         self.transitioningDelegate = self
         self.modalPresentationStyle = UIModalPresentationStyle.custom
         self.view.backgroundColor = UIColor.white
+       // self.titleLabel.backgroundColor = UIColor.lightGray
+       // self.titleLabel.alpha = 0.4
         
     }
     override func viewDidLoad()  {
@@ -100,7 +102,7 @@ class SecondViewController : UIViewController, UIViewControllerTransitioningDele
         if let loadedNews = self.news {
             
             let url = URL(string: loadedNews.thumbnail_pic_s!)!
-            self.titleLabel.text = loadedNews.title
+          //  self.titleLabel.text = loadedNews.title
             self.imageView.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
             
             if let webUrl = loadedNews.url {

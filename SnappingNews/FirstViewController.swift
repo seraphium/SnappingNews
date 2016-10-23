@@ -37,7 +37,9 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
         
         initializeFetchResultController()
         
-        loadNews()
+        initNews()
+        
+        refreshNews()
 
     }
     
@@ -47,22 +49,44 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
         let sort = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sort]
         let moc = PersistantStore.shared.context!
-        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "realtype", cacheName: nil)
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "realtype", cacheName: "newsCache")
         fetchedResultController.delegate = self
         
         }
     
     
+    //MARK: - default data loading
+    
+    func loadNewsFromFetchedController() {
+        do {
+            
+            try self.fetchedResultController.performFetch()
+            
+            self.tableView.reloadData()
+            print ("table reloaded")
+            
+        } catch let error {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+    
+    
+    func initNews() {
+        
+        loadNewsFromFetchedController()
+
+    }
+    
     
     
     //MARK: - network loading
     
-    func loadNews() {
-        SVProgressHUD.show(withStatus: "正在加载...")
+    func refreshNews() {
+       // SVProgressHUD.show(withStatus: "正在加载...")
         
         NetworkManager.sharedManager.loadTopNews(type: .shishang) {
             items in
-            SVProgressHUD.dismiss()
+          //  SVProgressHUD.dismiss()
             
             
             if let newsItems = items {
@@ -76,18 +100,9 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
                 
                 }
             
-                do {
-                    
-                    try self.fetchedResultController.performFetch()
-                    
-                    self.tableView.reloadData()
-                    
-                    self.news = newsItems
-                    
-                } catch let error {
-                    fatalError("Failed to initialize FetchedResultsController: \(error)")
-                }
-
+                self.news = newsItems
+               
+                self.loadNewsFromFetchedController()
             }
         }
         
@@ -103,8 +118,8 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
         cell.textLabel?.text = selectedObject.title
         
         let url = URL(string: selectedObject.thumbnail_pic_s!)!
-        cell.imageView?.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
-        
+        cell.imageView?.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "placeholder")
+            , options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
         
     }
     
