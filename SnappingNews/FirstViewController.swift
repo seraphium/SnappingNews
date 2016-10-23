@@ -30,7 +30,7 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        
+        self.refreshControl?.addTarget(self, action: #selector(pullRefresh), for: .valueChanged)
     }
     
     override func viewDidLoad() {
@@ -41,6 +41,11 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
         
         refreshNews()
 
+    }
+    
+    func pullRefresh() {
+        refreshNews()
+        self.refreshControl?.endRefreshing()
     }
     
     //MARK: - fetch result controller
