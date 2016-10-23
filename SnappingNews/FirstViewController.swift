@@ -116,15 +116,30 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
     
     //MARK: - table view delegate
     
-    func configureCell(cell: inout UITableViewCell, forIndexPath indexPath: IndexPath){
+    func configureCell(cell: inout NewsCell, forIndexPath indexPath: IndexPath){
         
         let selectedObject = fetchedResultController.object(at: indexPath as IndexPath) as News
         
-        cell.textLabel?.text = selectedObject.title
+        cell.newsTitle.text = selectedObject.title
         
-        let url = URL(string: selectedObject.thumbnail_pic_s!)!
-        cell.imageView?.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "placeholder")
+        if let url1 = selectedObject.thumbnail_pic_s {
+            cell.image1.kf.setImage(with:  URL(string: url1)!, placeholder: #imageLiteral(resourceName: "placeholder")
+                , options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+            
+        }
+        
+        if let url2 = selectedObject.thumbnail_pic_s02 {
+
+            cell.image2.kf.setImage(with:  URL(string: url2)!, placeholder: #imageLiteral(resourceName: "placeholder")
             , options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+        }
+        
+        if let url3 = selectedObject.thumbnail_pic_s03 {
+
+            cell.image3.kf.setImage(with:  URL(string: url3)!, placeholder: #imageLiteral(resourceName: "placeholder")
+            , options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+        }
+
         
     }
     
@@ -152,13 +167,13 @@ class FirstViewController : UITableViewController, NSFetchedResultsControllerDel
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell")!
+        var cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell") as! NewsCell
         configureCell(cell: &cell, forIndexPath: indexPath)
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
